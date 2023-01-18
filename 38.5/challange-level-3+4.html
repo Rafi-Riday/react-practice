@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challange 3 + 4</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        clifford: '#da373d',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-slate-800 text-white">
+    <div class="w-11/12 p-8 rounded-lg m-10 mx-auto bg-slate-600 grid grid-cols-12 items-start gap-4">
+        <h1 class="text-3xl text-center col-span-12">Please Contact</h1>
+
+        <input id="input-name" placeholder="Name" type="text"
+            class="rounded-lg text-black text-sm px-5 py-2 col-span-12 sm:col-span-6">
+        <button id="btn-name" class="bg-indigo-500 px-5 py-2 rounded-lg col-span-6 sm:col-span-3">Send Name</button>
+        <button id="delete-name" class="bg-rose-500 px-5 py-2 rounded-lg col-span-6 sm:col-span-3">Delete Name</button>
+
+        <input id="input-email" placeholder="Email" type="email"
+            class="rounded-lg text-black text-sm px-5 py-2 col-span-12 sm:col-span-6">
+        <button id="btn-email" class="bg-indigo-500 px-5 py-2 rounded-lg col-span-6 sm:col-span-3">Send Email</button>
+        <button id="delete-email" class="bg-rose-500 px-5 py-2 rounded-lg col-span-6 sm:col-span-3">Delete
+            Email</button>
+
+        <textarea id="input-message" placeholder="Messages" rows="3"
+            class="rounded-lg text-black text-sm px-5 py-2 col-span-12 sm:col-span-6"></textarea>
+        <button id="btn-message" class="bg-indigo-500 px-5 py-2 rounded-lg col-span-6 sm:col-span-3">Send
+            Message</button>
+        <button id="delete-message" class="bg-rose-500 px-5 py-2 rounded-lg col-span-6 sm:col-span-3">Delete
+            Message</button>
+
+        <div class="col-span-12"></div>
+        <div class="col-span-12"></div>
+
+        <div class="hidden sm:block sm:col-span-3"></div>
+        <button id="send-all" class="bg-emerald-600 px-5 py-2 rounded-lg col-span-6 sm:col-span-3">Send All</button>
+        <button id="reset-all" class="bg-orange-400 px-5 py-2 rounded-lg col-span-6 sm:col-span-3">Reset All</button>
+        <div class="hidden sm:block sm:col-span-3"></div>
+    </div>
+
+    <script>
+        const setEmptyData = () => {
+            if (!localStorage.getItem('userData')) {
+                localStorage.setItem('userData', JSON.stringify({}));
+            }
+            return JSON.parse(localStorage.getItem('userData'));
+        }
+
+        document.getElementById('btn-name').addEventListener('click', () => {
+            const userData = setEmptyData();
+            userData.name = document.getElementById('input-name').value;
+            localStorage.setItem('userData', JSON.stringify(userData));
+        })
+        document.getElementById('delete-name').addEventListener('click', () => {
+            const userData = setEmptyData();
+            delete userData.name;
+            localStorage.setItem('userData', JSON.stringify(userData));
+        })
+
+        document.getElementById('btn-email').addEventListener('click', () => {
+            const userData = setEmptyData();
+            userData.email = document.getElementById('input-email').value;
+            localStorage.setItem('userData', JSON.stringify(userData));
+        })
+        document.getElementById('delete-email').addEventListener('click', () => {
+            const userData = setEmptyData();
+            delete userData.email;
+            localStorage.setItem('userData', JSON.stringify(userData));
+        })
+
+        document.getElementById('btn-message').addEventListener('click', () => {
+            const userData = setEmptyData();
+            userData.message = document.getElementById('input-message').value;
+            localStorage.setItem('userData', JSON.stringify(userData));
+        })
+        document.getElementById('delete-message').addEventListener('click', () => {
+            const userData = setEmptyData();
+            delete userData.message;
+            localStorage.setItem('userData', JSON.stringify(userData));
+        })
+
+        document.getElementById('send-all').addEventListener('click', () => {
+            const userData = setEmptyData();
+            userData.name = document.getElementById('input-name').value;
+            userData.email = document.getElementById('input-email').value;
+            userData.message = document.getElementById('input-message').value;
+            localStorage.setItem('userData', JSON.stringify(userData));
+        })
+        document.getElementById('reset-all').addEventListener('click', () => {
+            localStorage.removeItem('userData');
+        })
+    </script>
+</body>
+
+</html>

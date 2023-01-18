@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Position-static-relative</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+        }
+
+        .img-cont {
+            position: relative;
+        }
+
+        img {
+            display: block;
+            border: 1px dashed red;
+        }
+
+        .ring {
+            position: sticky;
+            top: 100px;
+        }
+
+        .ring-fixed {
+            position: fixed;
+            bottom: 70px;
+            right: 70px;
+        }
+
+        .div-stick {
+            height: 100px;
+            width: 200px;
+            background: pink;
+            border: 1px dashed red;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div>Upper Section Start<br><br><br> Upper Section End</div>
+        <div class="div-stick"></div>
+        <div class="div-stick"></div>
+        <div class="div-stick"></div>
+        <div class="div-stick"></div>
+    </section>
+    <section class="img-cont">
+        <img class="boy" src="images/boy.svg">
+        <img class="ring" src="images/ring.svg">
+        <img class="water" src="images/water.svg">
+        <img class="ring-fixed" src="images/ring.svg">
+        <div class="div-stick"></div>
+        <div class="div-stick"></div>
+        <div class="div-stick"></div>
+        <div class="div-stick"></div>
+        <div class="div-stick"></div>
+        <div class="div-stick"></div>
+        <div class="div-stick"></div>
+        <div class="div-stick"></div>
+        <div class="div-stick"></div>
+        <div class="div-stick"></div>
+        <div class="div-stick"></div>
+    </section>
+</body>
+
+</html>

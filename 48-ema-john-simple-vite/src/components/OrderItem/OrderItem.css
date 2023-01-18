@@ -1,0 +1,48 @@
+.order-item-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #95a0a7;
+    border-radius: 8px;
+    gap: 20px;
+    padding-right: 20px;
+}
+
+.order-info {
+    flex-grow: 1;
+}
+
+.order-img {
+    width: 90px;
+    border-radius: 8px;
+    margin: 8px;
+}
+
+.text-orange {
+    color: #f55a00;
+}
+
+.order-delete-btn {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #eb575700;
+    border-radius: 50%;
+    background-color: #eb57574d;
+    cursor: pointer;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+.order-delete-btn:hover {
+    background-color: #eb57577e;
+}
+
+.order-delete-btn:active {
+    border: 2px solid #eb5757;
+}
+
+.order-delete-icon {
+    color: #eb5757;
+    font-size: 30px;
+}

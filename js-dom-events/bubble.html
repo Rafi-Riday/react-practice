@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble</title>
+    <style>
+        #list-item-2 {
+            border: 3px solid pink;
+        }
+
+        #ul-list {
+            border: 3px solid red;
+        }
+
+        #body {
+            border: 3px solid violet;
+        }
+    </style>
+</head>
+
+<body id="body">
+    <h1>Event Bubble</h1>
+    <ul id="ul-list">
+        <li id="list-item-1">Lorem ipsum dolor sit amet.</li>
+        <li id="list-item-2">Laboriosam architecto facere voluptates inventore?</li>
+        <li id="list-item-3">Esse laborum voluptates fuga aliquid!</li>
+        <li id="list-item-4">Laborum delectus perspiciatis commodi animi?</li>
+        <li id="list-item-5">Ex consequuntur similique quae sit?</li>
+        <li id="list-item-6">Consequuntur optio ratione soluta. Voluptate?</li>
+    </ul>
+    <script>
+        document.getElementById('list-item-2').addEventListener('click', function (event) {
+            console.log('list-item-2 clickde');
+            // event.stopPropagation();
+            event.stopImmediatePropagation();
+        });
+        document.getElementById('list-item-2').addEventListener('click', function () {
+            console.log('list-item-2 again clickde');
+        });
+        document.getElementById('ul-list').addEventListener('click', function () {
+            console.log('ul-list clickde');
+        });
+        document.getElementById('body').addEventListener('click', function () {
+            console.log('body clickde');
+        });
+    </script>
+</body>
+
+</html>

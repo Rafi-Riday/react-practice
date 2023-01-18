@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transition</title>
+    <style>
+        main {
+            height: 500px;
+            width: 500px;
+            background: #532e1f;
+            transform: translate(150px, 50px);
+        }
+
+        footer {
+            height: 300px;
+            width: 300px;
+            background: #6590ec;
+            transform: translate(800px, 200px);
+        }
+
+        .box {
+            height: 100px;
+            width: 100px;
+            border: 2px dashed #532e1f;
+            background: coral;
+            transition: width 1s ease 0.5s, transform 0.5s cubic-bezier(0.21, -0.12, 0.47, 0.97);
+        }
+
+        footer:hover~.box {
+            width: 200px;
+            transform: rotate(360deg) scale(2);
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <footer></footer>
+        <div class="box">Box Number 1</div>
+    </main>
+    <br><br><br><br><br>
+    <br><br><br><br><br>
+    <br><br><br><br><br>
+    <br><br><br><br><br>
+</body>
+
+</html>

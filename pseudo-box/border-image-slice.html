@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            background: #474747;
+            overflow-x: hidden;
+            text-align: center;
+        }
+
+        .border-image-slice {
+            height: 100px;
+            width: 100px;
+            border: 50px solid transparent;
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px;
+            border-image: url(border-img.png) round;
+            border-image-slice: 20%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="border-image-slice"></div>
+</body>
+
+</html>

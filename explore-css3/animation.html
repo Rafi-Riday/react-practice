@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation</title>
+    <style>
+        @keyframes bounch {
+            0% {
+                left: 0;
+                top: 0;
+                background: yellow;
+                transform: scale(1);
+            }
+
+            25% {
+                top: 225px;
+                background: red;
+                transform: scale(0.5);
+            }
+
+            50% {
+                top: 0;
+                background: yellow;
+                transform: scale(1);
+            }
+
+            75% {
+                top: 225px;
+                background: red;
+                transform: scale(0.5);
+            }
+
+            100% {
+                left: 600px;
+                top: 0;
+                background: yellow;
+                transform: scale(1);
+            }
+        }
+
+        .box {
+            height: 300px;
+            width: 700px;
+            background: #461010;
+        }
+
+        .ball {
+            position: relative;
+            height: 100px;
+            width: 100px;
+            background: #9cffcd;
+            border-radius: 50%;
+            animation: bounch 2s ease-in 0.2s infinite alternate;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>This is animation testing</h1>
+    </header>
+    <main>
+        <div class="box">
+            <div class="ball"></div>
+        </div>
+    </main>
+</body>
+
+</html>

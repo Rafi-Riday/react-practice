@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challange level 2</title>
+</head>
+
+<body>
+    <h3>Count : <span id="count"></span> <button id="positive-count-btn">+</button> <button
+            id="negative-count-btn">-</button></h3>
+
+    <script>
+        const addCountBtn = document.getElementById('positive-count-btn');
+        const subCountBtn = document.getElementById('negative-count-btn');
+        const count = document.getElementById('count');
+
+        const setEmptyLocalStorage = () => {
+            if (!localStorage.getItem('countVal')) {
+                localStorage.setItem('countVal', 0);
+            }
+        }
+        const displayCountFunc = () => {
+            setEmptyLocalStorage();
+            count.innerText = localStorage.getItem('countVal');
+        }
+        const addCountFunc = () => {
+            setEmptyLocalStorage();
+            const countVal = localStorage.getItem('countVal');
+            localStorage.setItem('countVal', parseInt(countVal) + 1);
+            displayCountFunc();
+        }
+        const subCountFunc = () => {
+            setEmptyLocalStorage();
+            const countVal = localStorage.getItem('countVal');
+            localStorage.setItem('countVal', parseInt(countVal) - 1);
+            displayCountFunc();
+        }
+
+        addCountBtn.addEventListener('click', addCountFunc);
+        subCountBtn.addEventListener('click', subCountFunc);
+        window.addEventListener('load', displayCountFunc);
+    </script>
+</body>
+
+</html>

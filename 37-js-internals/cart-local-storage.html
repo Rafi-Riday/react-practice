@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+</head>
+
+<body>
+    <div>
+        <input type="text" id="shopping-item" placeholder="Shopping Item">
+        <input type="text" id="shopping-number" placeholder="Shopping Number">
+        <button id="shopping-btn">Shop</button>
+        <button id="clear-cart">Clear Items</button>
+        <ul id="cart-container"></ul>
+    </div>
+    <br>
+
+    <script>
+        const shoppingItem = document.getElementById('shopping-item');
+        const shoppingNumber = document.getElementById('shopping-number');
+        document.getElementById('shopping-btn').addEventListener('click', function () {
+            if (shoppingItem.value !== '' && shoppingNumber.value !== '') {
+                if (!localStorage.getItem('cart')) {
+                    localStorage.setItem('cart', JSON.stringify({}));
+                }
+                const cartItems = JSON.parse(localStorage.getItem('cart'));
+                cartItems[shoppingItem.value] = shoppingNumber.value;
+                shoppingItem.value = '';
+                shoppingNumber.value = '';
+                localStorage.setItem('cart', JSON.stringify(cartItems));
+                displayCartItems();
+            }
+        })
+
+        document.getElementById('clear-cart').addEventListener('click', function () {
+            localStorage.clear();
+            displayCartItems();
+        })
+
+        const displayCartItems = () => {
+            document.getElementById('cart-container').textContent = ``;
+            const cartItems = JSON.parse(localStorage.getItem('cart'));
+            for (const item in cartItems) {
+                const li = document.createElement('li');
+                li.innerText = `${item} : ${cartItems[item]}`;
+                document.getElementById('cart-container').appendChild(li);
+            }
+        }
+        displayCartItems();
+    </script>
+</body>
+
+</html>

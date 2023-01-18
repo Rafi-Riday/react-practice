@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+    <script src="bootstrap/bootstrap.bundle.min.js"></script>
+    <title>Carousel</title>
+</head>
+
+<body>
+    <h1>Carousel</h1>
+    <div id="carousel_1" class="carousel slide bg-primary w-25" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carousel_1" data-bs-slide-to="0" class="active" aria-current="true"
+                aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carousel_1" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carousel_1" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carousel_1" data-bs-slide-to="3" aria-label="Slide 4"></button>
+            <button type="button" data-bs-target="#carousel_1" data-bs-slide-to="4" aria-label="Slide 5"></button>
+            <button type="button" data-bs-target="#carousel_1" data-bs-slide-to="5" aria-label="Slide 6"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="img/flag-1.png" alt="Flag 1" class="d-block w-100">
+            </div>
+            <div class="carousel-item">
+                <img src="img/flag-2.png" alt="Flag 2" class="d-block w-100">
+            </div>
+            <div class="carousel-item">
+                <img src="img/flag-3.png" alt="Flag 3" class="d-block w-100">
+            </div>
+            <div class="carousel-item">
+                <img src="img/flag-4.png" alt="Flag 4" class="d-block w-100">
+            </div>
+            <div class="carousel-item">
+                <img src="img/flag-5.png" alt="Flag 5" class="d-block w-100">
+            </div>
+            <div class="carousel-item">
+                <img src="img/flag-6.png" alt="Flag 6" class="d-block w-100">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carousel_1" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carousel_1" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</body>
+
+</html>

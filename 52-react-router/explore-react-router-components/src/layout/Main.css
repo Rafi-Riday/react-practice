@@ -1,0 +1,9 @@
+.Main {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.grow {
+    flex-grow: 1;
+}

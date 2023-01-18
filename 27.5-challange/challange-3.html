@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        clifford: '#da373d',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-green-50 text-black">
+    <header class="text-4xl text-center my-8">
+        My own <span class="text-teal-600 font-semibold">Calculator</span>!!!
+    </header>
+    <main>
+        <section class="w-[450px] bg-slate-600 p-8 mx-auto rounded-lg grid grid-cols-10 gap-3">
+            <input id="calc-field" type="text" class="text-black col-span-10 rounded text-right py-2 px-3"
+                placeholder="Calculation Field ">
+            <!--  -->
+            <button
+                class="calc-btn col-span-2 rounded-lg p-2 bg-white font-semibold text-xl active:bg-stone-200">(</button>
+            <div class="col-span-6"></div>
+            <button
+                class="calc-btn col-span-2 rounded-lg p-2 bg-white font-semibold text-xl active:bg-stone-200">)</button>
+            <!--  -->
+            <button class="calc-btn col-span-2 rounded-lg p-2 bg-white active:bg-stone-200">7</button>
+            <button class="calc-btn col-span-2 rounded-lg p-2 bg-white active:bg-stone-200">8</button>
+            <button class="calc-btn col-span-2 rounded-lg p-2 bg-white active:bg-stone-200">9</button>
+            <button id="calc-ac"
+                class="col-span-2 rounded-lg p-2 bg-rose-500 text-white font-semibold active:bg-rose-600">AC</button>
+            <button id="calc-del"
+                class="col-span-2 rounded-lg p-2 bg-rose-500 text-white font-semibold active:bg-rose-600">DEL</button>
+            <!--  -->
+            <button class="calc-btn col-span-2 rounded-lg p-2 bg-white active:bg-stone-200">4</button>
+            <button class="calc-btn col-span-2 rounded-lg p-2 bg-white active:bg-stone-200">5</button>
+            <button class="calc-btn col-span-2 rounded-lg p-2 bg-white active:bg-stone-200">6</button>
+            <button
+                class="calc-btn col-span-2 rounded-lg p-2 bg-white font-semibold text-xl active:bg-stone-200">*</button>
+            <button
+                class="calc-btn col-span-2 rounded-lg p-2 bg-white font-semibold text-xl active:bg-stone-200">/</button>
+            <!--  -->
+            <button class="calc-btn col-span-2 rounded-lg p-2 bg-white active:bg-stone-200">1</button>
+            <button class="calc-btn col-span-2 rounded-lg p-2 bg-white active:bg-stone-200">2</button>
+            <button class="calc-btn col-span-2 rounded-lg p-2 bg-white active:bg-stone-200">3</button>
+            <button
+                class="calc-btn col-span-2 rounded-lg p-2 bg-white font-semibold text-xl active:bg-stone-200">+</button>
+            <button
+                class="calc-btn col-span-2 rounded-lg p-2 bg-white font-semibold text-xl active:bg-stone-200">-</button>
+            <!--  -->
+            <button class="calc-btn col-span-2 rounded-lg p-2 bg-white active:bg-stone-200">0</button>
+            <button class="calc-btn col-span-2 rounded-lg p-2 bg-white font-semibold active:bg-stone-200">.</button>
+            <!--  -->
+            <button id="calc-ans"
+                class="col-span-2 rounded-lg p-2 bg-white font-semibold active:bg-stone-200">Ans</button>
+            <button id="calc-result"
+                class="col-span-4 rounded-lg p-2 bg-cyan-600 text-white font-semibold text-xl active:bg-cyan-700">=</button>
+        </section>
+    </main>
+    <script>
+        // global variable
+        const calcField = document.getElementById('calc-field');
+        const calcBtnAll = document.getElementsByClassName('calc-btn');
+        let calcAns = '';
+        // uutilities
+        function executeJS(string) {
+            return Function(`"use strict";return (${string})`)();
+        }
+        function preventInvalid(eventArg) {
+            // if (calcField.value !== '') {
+                const targetField = eventArg.target.value.split('');
+                for (i=0; i<targetField.length;i++) {
+                    if (!'.0123456789+-*/()'.includes(targetField[i])) {
+                        alert("In-valid input");
+                        targetField.splice(i,1);
+                    }
+                eventArg.target.value = targetField.join('');
+                }
+            // }
+        }
+        function calcResult() {
+            if (calcField.value !== '') {
+                calcField.value = executeJS(calcField.value);
+                calcAns = calcField.value;
+            }
+        }
+        // process
+        // preventInvalid
+        calcField.addEventListener('keyup', function (event) {
+            if (event.key === 'Enter') {
+                calcResult();
+            }
+            preventInvalid(event);
+        });
+        // calc-btn
+        for (const calcBtn of calcBtnAll) {
+            calcBtn.addEventListener('click', function (event) {
+                calcField.value = calcField.value + event.target.innerText;
+            });
+        }
+        // AC
+        document.getElementById('calc-ac').addEventListener('click', function () {
+            if (calcField.value !== '') {
+                calcField.value = '';
+            }
+        });
+        // DEL
+        document.getElementById('calc-del').addEventListener('click', function () {
+            if (calcField.value !== '') {
+                calcField.value = calcField.value.slice(0, -1);
+            }
+        });
+        // Ans
+        document.getElementById('calc-ans').addEventListener('click', function () {
+            calcField.value = calcField.value + calcAns;
+        });
+        // =
+        document.getElementById('calc-result').addEventListener('click', function () {
+            calcResult();
+        });
+    </script>
+</body>
+
+</html>

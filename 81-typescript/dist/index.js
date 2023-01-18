@@ -1,0 +1,12 @@
+"use strict";
+var msg = "Hello with typescript";
+console.log(msg, '', msg2);
+var str;
+str = "asd";
+var num;
+num = 69;
+var bool;
+bool = true;
+var myName = 'riday';
+var strOrNum;
+strOrNum = 69;

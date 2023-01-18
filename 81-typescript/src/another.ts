@@ -1,0 +1,1 @@
+let msg2 = "Bye Bye JavaScript";

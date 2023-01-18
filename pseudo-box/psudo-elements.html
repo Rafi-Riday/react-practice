@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        h2::first-line {
+            color: #3e534c;
+            font-variant: small-caps;
+        }
+
+        h2::first-letter {
+            font-size: 50px;
+        }
+
+        .element::before {
+            content: "Hello~~ ";
+        }
+
+        .element::after {
+            content: " ~~gello";
+        }
+
+        ::marker {
+            color: red;
+            font-size: 30px;
+        }
+
+        ::selection {
+            background: #3e534c;
+            color: aquamarine;
+        }
+    </style>
+</head>
+
+<body>
+    <h2 class="element">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo incidunt culpa molestiae? Vero quo
+        culpa iure
+        minima eaque. Corporis, rem! Quas dolore aut possimus tempora illum, officia pariatur voluptatem aliquam.
+    </h2>
+    <ul>
+        <li>$</li>
+        <li>$</li>
+        <li>$</li>
+        <li>$</li>
+        <li>$</li>
+    </ul>
+</body>
+
+</html>

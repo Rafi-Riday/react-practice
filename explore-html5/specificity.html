@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Specificity</title>
+    <style>
+        body {
+            background: #363636;
+            color: antiquewhite;
+        }
+
+        /**/
+
+        .important {
+            color: #ffffff !important;
+        }
+
+        #header-id {
+            color: #f31313;
+        }
+
+        .header-class {
+            color: #00ff0d;
+        }
+
+        h1 {
+            color: #ffafaf;
+        }
+
+        /**/
+
+        th,
+        td {
+            border: 1px solid grey;
+            margin: 0;
+            padding: 10px;
+            font-weight: 700;
+            text-align: justify;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>This is text 1</h1>
+    <h1 class="header-class">Styled text 2</h1>
+    <h1 id="header-id">Styled text 3</h1>
+    <h1 class="header-class" id="header-id">Styled text 4</h1>
+    <h1 style="color: blue;" id="header-id">Styled text 5</h1>
+    <h1 style="color: blue;" class="important">Styled text 6</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Selector</th>
+                <th>Specificity Value</th>
+                <th>Calculation</th>
+            </tr>
+            <tr>
+                <td>*</td>
+                <td>0</td>
+                <td>0 (the universal selector is ignored)</td>
+            </tr>
+            <tr>
+                <td>p</td>
+                <td>1</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>.test</td>
+                <td>10</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>#demo</td>
+                <td>100</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>&lt;p style="color: pink;"&gt;</td>
+                <td>1000</td>
+                <td>1000</td>
+            </tr>
+            <tr>
+                <td>!important</td>
+                <td><span style="font-size: 25px;">∞</span></td>
+                <td>!important overrides all other styles</td>
+            </tr>
+            <tr>
+                <td style="text-align: center;" colspan="3">
+                    ---------------------------------------------------------------------------------------
+                </td>
+            </tr>
+            <tr>
+                <td>p.test</td>
+                <td>11</td>
+                <td>1 + 10</td>
+            </tr>
+            <tr>
+                <td>p.test1.test2</td>
+                <td>21</td>
+                <td>1 + 10 + 10</td>
+            </tr>
+            <tr>
+                <td>p#demo</td>
+                <td>101</td>
+                <td>1 + 100</td>
+            </tr>
+            <tr>
+                <td>p#demo #navbar</td>
+                <td>201</td>
+                <td>1 + 100 + 100</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+
+</html>

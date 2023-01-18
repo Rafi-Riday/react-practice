@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discount Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        clifford: '#da373d',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-slate-800 text-white">
+    <header class="text-4xl text-center my-8">
+        Discount <span class="text-teal-500 font-semibold">Calculator</span>!!!
+    </header>
+    <main>
+        <section class="w-[450px] bg-red-400 p-8 mx-auto rounded-lg grid grid-cols-12 gap-3">
+            <input id="money" class="text-black px-2 py-2 rounded-lg shadow-2xl col-span-7" type="text"
+                placeholder="$ money">
+            <input id="result" class="text-black px-2 py-2 rounded-lg shadow-2xl col-span-5" type="text"
+                placeholder="$ result">
+            <input id="discount" class="text-black px-2 py-2 rounded-lg shadow-2xl col-span-4" type="text"
+                placeholder="$ discount">
+            <div class="text-black text-center py-2 rounded-lg shadow-2xl col-span-1 bg-white">%</div>
+            <input id="confirmation" class="text-black px-2 py-2 rounded-lg shadow-2xl col-span-4" type="text"
+                placeholder="$ type 'DOM'">
+            <button id="apply"
+                class="col-span-3 row-span-1 px-2 py-2 rounded-lg shadow-2xl bg-teal-500 hover:bg-teal-600">Apply</button>
+        </section>
+    </main>
+    <script>
+        function preventNaN(eventArg) {
+            if (isNaN(eventArg.target.value)) {
+                alert("Please enter number in every field");
+                eventArg.target.value = eventArg.target.value.slice(0, -1);
+                return;
+            }
+        }
+        // variable
+        const moneyField = document.getElementById('money');
+        const resultField = document.getElementById('result');
+        const discountField = document.getElementById('discount');
+        const confirmationField = document.getElementById('confirmation');
+        moneyField.addEventListener('keyup', function (event) {
+            preventNaN(event);
+        });
+        resultField.addEventListener('keyup', function (event) {
+            preventNaN(event);
+        });
+        discountField.addEventListener('keyup', function (event) {
+            preventNaN(event);
+        });
+        document.getElementById('apply').addEventListener('click', function () {
+            const money = parseFloat(moneyField.value);
+            const discount = parseFloat(discountField.value);
+            const result = parseFloat(money - money * discount / 100);
+            if (isNaN(result)) {
+                alert("Please enter number in every field");
+                return;
+            }
+            if (confirmationField.value !== 'DOM') {
+                alert("Please type 'DOM' inside CONFIRMATION box");
+                return;
+            }
+            resultField.value = result;
+        });
+    </script>
+</body>
+
+</html>

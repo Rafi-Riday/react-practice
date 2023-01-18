@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Custom Property</title>
+    <style>
+        :root {
+            --dark-main: #0a0046;
+            --dark-sub: #251483;
+            --dark-color: #eee;
+            --light-border: 2px solid yellow;
+        }
+
+        body {
+            color: var(--dark-color);
+            background: var(--dark-main);
+        }
+
+        section {
+            background: red;
+            height: 200px;
+            width: 200px;
+            float: left;
+            border: var(--light-border);
+        }
+
+        aside {
+            background: var(--dark-sub);
+            height: 200px;
+            width: calc(100% - 2*200px);
+            float: left;
+        }
+
+        footer {
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>This is a Heading</h1>
+    </header>
+    <main>
+        <section>
+            <h2>This is main part</h2>
+        </section>
+        <aside>
+            <h2>This is aside</h2>
+        </aside>
+    </main>
+    <footer><small>This is Footer</small></footer>
+</body>
+
+</html>

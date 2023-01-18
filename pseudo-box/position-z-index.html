@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Position-static-relative</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+        }
+
+        .img-cont {
+            position: relative;
+        }
+
+        img {
+            display: block;
+        }
+
+        .boy {
+            position: relative;
+            z-index: 1;
+        }
+
+        .ring {
+            position: relative;
+            bottom: 70px;
+            z-index: 0;
+        }
+
+        .water {
+            position: relative;
+            bottom: 150px;
+            z-index: -1;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div>Upper Section Start<br><br><br> Upper Section End</div>
+    </section>
+    <section class="img-cont">
+        <img class="boy" src="images/boy.svg">
+        <img class="ring" src="images/ring.svg">
+        <img class="water" src="images/water.svg">
+    </section>
+</body>
+
+</html>

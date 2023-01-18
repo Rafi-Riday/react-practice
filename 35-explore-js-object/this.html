@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    .d-none {
+        display: none;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>This</title>
+</head>
+
+<body>
+    <button onclick="click1(this)">Click 1</button>
+    <div class="change d-none">asd</div>
+    <button id="click2">Click 2</button>
+    <button onclick="newObj.this2(this)">Arrow 2</button>
+    <button onclick="newObj.inside1.inside2.inside3.this3(this)">Arrow 3</button>
+    <script src="this.js"></script>
+</body>
+
+</html>

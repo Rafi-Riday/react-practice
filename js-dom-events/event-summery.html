@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom Event Summery</title>
+</head>
+
+<body>
+    <h3 id="handler-status">Default Text</h3>
+    <button onclick="handlerFunction()">Handler Function</button>
+    <button id="handler-event-listener">Handler by addEventListener</button>
+    <p id="input-display">Default input display</p>
+    <input type="text" id="input-field">
+    <button id="update-input-button">Update</button>
+    <script>
+        function handlerFunction() {
+            document.getElementById('handler-status').innerText = 'Text Changed by function call';
+        }
+        document.getElementById('handler-event-listener').addEventListener('click', function () {
+            document.getElementById('handler-status').innerText = 'Text changed by addEventListener'
+        })
+        document.getElementById('update-input-button').addEventListener('click', function () {
+            document.getElementById('input-display').innerText = document.getElementById('input-field').value;
+            document.getElementById('input-field').value = '';
+        })
+    </script>
+</body>
+
+</html>

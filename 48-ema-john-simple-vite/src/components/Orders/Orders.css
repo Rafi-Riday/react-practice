@@ -1,0 +1,12 @@
+.order-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.order-items {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 15px;
+}

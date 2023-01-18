@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+    <script src="bootstrap/bootstrap.bundle.min.js"></script>
+    <title>Alerts</title>
+</head>
+
+<body>
+    <div class="container my-3">
+        <div id="liveAlertPlaceholder"></div>
+        <button type="button" class="btn btn-primary" id="liveAlertBtn">Show live alert</button>
+    </div>
+    <script>
+        const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+
+        const alert = (message, type) => {
+            const wrapper = document.createElement('div')
+            wrapper.innerHTML = [
+                `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+                `   <div>${message}</div>`,
+                '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+                '</div>'
+            ].join('')
+
+            alertPlaceholder.append(wrapper)
+        }
+
+        const alertTrigger = document.getElementById('liveAlertBtn')
+        if (alertTrigger) {
+            alertTrigger.addEventListener('click', () => {
+                alert('Nice, you triggered this alert message!', 'success')
+            })
+        }
+    </script>
+</body>
+
+</html>

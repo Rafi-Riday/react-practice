@@ -1,0 +1,15 @@
+.parent {
+    border: 2px solid orange;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.parent section {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}

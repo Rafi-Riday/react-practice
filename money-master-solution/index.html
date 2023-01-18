@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Master</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        clifford: '#da373d',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-slate-200 text-white">
+    <header>
+        <h1 class="text-cyan-800 font-bold text-4xl text-center my-8">Money Master</h1>
+    </header>
+    <main class="flex flex-col md:flex-row gap-5">
+        <section class="bg-sky-600 p-8 rounded-lg mx-auto">
+            <h1 class="text-2xl font-bold text-center my-2">Income</h1>
+            <span class="text-xl">Income :</span> <input id="income-field" class="text-black w-8/12 px-2 float-right"
+                type="text" placeholder="$ Income">
+            <h1 class="text-2xl font-bold text-center my-2">Expenses</h1>
+            <span class="text-xl">Food :</span> <input id="food-field" class="text-black w-8/12 px-2 float-right"
+                type="text" placeholder="$ Food">
+            <br>
+            <span class="text-xl">Rent :</span> <input id="rent-field" class="text-black w-8/12 px-2 float-right"
+                type="text" placeholder="$ Rent">
+            <br>
+            <span class="text-xl">Clothes :</span> <input id="cloth-field" class="text-black w-8/12 px-2 float-right"
+                type="text" placeholder="$ Clothes">
+            <br>
+
+            <div class="flex justify-center">
+                <button disabled id="calculate"
+                    class="bg-slate-700 disabled:bg-slate-500 disabled:text-gray-400 disabled:cursor-not-allowed px-3 py-2 rounded-lg my-5">Calculate</button>
+            </div>
+
+            <div class="text-2xl font-semibold text-center">Total Expenses: <span id="expenses">00</span></div>
+            <div class="text-2xl font-semibold text-center">Balance: <span id="balance">00</span></div>
+
+            <div class="flex justify-center items-center gap-5 my-5">
+                <span class="text-xl">Save</span><input id="save-field" class="text-black px-3 py-1 rounded-lg w-3/12"
+                    type="text" placeholder="% Save"><span>%</span><button disabled id="save"
+                    class="bg-slate-700 disabled:bg-slate-500 disabled:text-gray-400 disabled:cursor-not-allowed px-3 py-2 rounded-lg w-3/12">Save</button>
+            </div>
+
+            <div class="text-2xl font-semibold text-center">Saving Amount: <span id="saving">00</span></div>
+            <div class="text-2xl font-semibold text-center">Remaining Balance: <span id="remaining">00</span></div>
+
+        </section>
+    </main>
+    <script>
+        // variable
+        const incomeField = document.getElementById('income-field');
+        const foodField = document.getElementById('food-field');
+        const rentField = document.getElementById('rent-field');
+        const clothField = document.getElementById('cloth-field');
+        const saveField = document.getElementById('save-field');
+        // uutilities
+        // function setEmptyField(targetFields, targetBtn) {
+        //     for (const targetField of targetFields) {
+        //         console.log(targetField.value);
+        //         if (targetField.value === '') {
+        //             setTimeout(function () {
+        //                 targetField.value = 0;
+        //                 document.getElementById(targetBtn).removeAttribute('disabled');
+        //             }, 2000);
+        //         }
+        //     }
+        // }
+        //
+        function disableBtnEmptyField(targetFields, targetBtn) {
+            // const conditions = [incomeField, foodField, rentField, clothField];
+            let logic = 0;
+            for (const targetField of targetFields) {
+                if (targetField.value === '') {
+                    logic++;
+                }
+                if (logic === 0) {
+                    document.getElementById(targetBtn).removeAttribute('disabled');
+                }
+                else {
+                    document.getElementById(targetBtn).setAttribute('disabled', true);
+                }
+            }
+            // setEmptyField(targetFields, targetBtn);
+        }
+        //
+        function preventInvalid(eventArg) {
+            if (eventArg.target.value !== '') {
+                for (const value of eventArg.target.value) {
+                    if (isNaN(value)) {
+                        alert("In-valid input");
+                        eventArg.target.value = eventArg.target.value.slice(0, -1);
+                    }
+                }
+            }
+        }
+        //
+        function acceptNuN(valueArg) {
+            if (isNaN(valueArg)) {
+                return 0;
+            }
+            else {
+                return parseFloat(valueArg);
+            }
+        }
+        // process
+        // setEmptyField([incomeField, foodField, rentField, clothField], 'calculate');
+        // setEmptyField([incomeField, saveField], 'save');
+        incomeField.addEventListener('keyup', function (event) {
+            preventInvalid(event);
+            disableBtnEmptyField([incomeField, foodField, rentField, clothField], 'calculate');
+            disableBtnEmptyField([incomeField, saveField], 'save');
+        })
+        foodField.addEventListener('keyup', function (event) {
+            preventInvalid(event);
+            disableBtnEmptyField([incomeField, foodField, rentField, clothField], 'calculate');
+        })
+        rentField.addEventListener('keyup', function (event) {
+            preventInvalid(event);
+            disableBtnEmptyField([incomeField, foodField, rentField, clothField], 'calculate');
+        })
+        clothField.addEventListener('keyup', function (event) {
+            preventInvalid(event);
+            disableBtnEmptyField([incomeField, foodField, rentField, clothField], 'calculate');
+        })
+        saveField.addEventListener('keyup', function (event) {
+            preventInvalid(event);
+            disableBtnEmptyField([incomeField, saveField], 'save');
+        })
+
+        document.getElementById('calculate').addEventListener('click', function () {
+            const expenses = parseFloat(foodField.value) + parseFloat(rentField.value) + parseFloat(clothField.value);
+            const balance = parseFloat(incomeField.value) - parseFloat(foodField.value) - parseFloat(rentField.value) - parseFloat(clothField.value);
+
+            if (balance < 0) {
+                alert('Not enough money :-(');
+                return;
+            }
+
+            document.getElementById('expenses').innerText = expenses;
+            document.getElementById('balance').innerText = balance;
+        })
+        document.getElementById('save').addEventListener('click', function () {
+            const saving = parseFloat(incomeField.value) * parseFloat(saveField.value) / 100;
+            if (parseFloat(saveField.value) > 100) {
+                alert('Saving cant be greater than "100%" :-(');
+                return;
+            }
+
+            const expenses = acceptNuN(parseFloat((foodField.value))) + acceptNuN(parseFloat((rentField.value))) + acceptNuN(parseFloat((clothField.value)));
+
+
+            const remaining = parseFloat(incomeField.value) - saving - expenses;
+            console.log(acceptNuN(expenses));
+            console.log(expenses);
+            if (remaining < 0) {
+                alert('Cant save ' + saveField.value + '% money :-(');
+                return;
+            }
+            document.getElementById('saving').innerText = saving;
+            document.getElementById('remaining').innerText = remaining;
+        })
+    </script>
+</body>
+
+</html>

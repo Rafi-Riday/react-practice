@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comment Box</title>
+</head>
+
+<body>
+    <h1>Comment Box</h1>
+    <div id="comment-container">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis dolores esse minus natus suscipit,
+            corporis provident laboriosam sit quae aperiam similique dicta. Praesentium quos corporis nesciunt?
+            Voluptate porro eum inventore rem fugiat quae, quia assumenda sequi quis optio laboriosam illum rerum! Vel
+            dignissimos quod vero nesciunt iusto ex porro ullam.</p>
+        <p>Recusandae suscipit neque quasi eligendi ut quod delectus! Consectetur cumque neque repellat animi voluptate,
+            doloribus fugit provident, porro inventore quos culpa laborum? Fuga officiis esse iure, totam veniam
+            perferendis incidunt aspernatur molestiae cum fugiat consectetur sequi repellendus saepe aperiam sed magnam
+            fugit itaque odio explicabo id consequatur aut? Adipisci, corrupti?</p>
+        <p>Esse nostrum voluptates cupiditate quae? Aut incidunt blanditiis qui possimus odit illo neque reprehenderit
+            eius excepturi reiciendis error praesentium, quidem tempora a in velit maxime, aperiam labore laboriosam
+            maiores magnam? Ullam animi voluptas amet culpa corrupti, quisquam neque exercitationem blanditiis nisi
+            ipsam, optio dignissimos fugit quaerat, accusamus tenetur sapiente unde?</p>
+    </div>
+    <br>
+    <br>
+    <center>
+        <textarea id="comment-field" cols="100" rows="5"></textarea>
+        <br>
+        <br>
+        <button id="comment-button">Submit</button>
+    </center>
+    <script>
+        styleCmnt();
+        const commentField = document.getElementById('comment-field');
+        document.getElementById('comment-button').addEventListener('click', function () {
+            const newComment = document.createElement('p');
+            newComment.innerText = commentField.value;
+            document.getElementById('comment-container').appendChild(newComment);
+            commentField.value = '';
+            styleCmnt();
+        });
+        function styleCmnt() {
+            const comments = document.querySelectorAll('#comment-container p');
+            for (const comment of comments) {
+                comment.style.margin = '10px';
+                comment.style.border = '2px solid #333';
+                comment.style.padding = '10px';
+                comment.style.borderRadius = '15px';
+            }
+        }
+    </script>
+</body>
+
+</html>
